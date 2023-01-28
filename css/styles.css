@@ -56,7 +56,6 @@ img {
   flex-direction: row;
   align-items: flex-start;
   padding: 0px;
- 
 }
 .logo-web {
   color: #4d5ae5;
@@ -68,7 +67,6 @@ img {
   display: flex;
   align-items: center;
   margin-right: auto;
-  
 }
 
 .header-list {
@@ -76,8 +74,6 @@ img {
   gap: 40px;
 }
 .header-item {
-  
-  
 }
 .header-mail:hover,
 .header-mail:focus,
@@ -97,17 +93,16 @@ img {
 }
 .current {
   position: relative;
-
 }
 .current::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 4px;
   left: 0px;
-bottom: -28px;
-  background-color: #404BBF;
-border-radius: 2px;
+  bottom: -28px;
+  background-color: #404bbf;
+  border-radius: 2px;
 }
 .header-contacts {
 }
@@ -352,7 +347,8 @@ border-radius: 2px;
   padding: 16px 32px;
   justify-content: center;
   color: #8e8f99;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-icon {
   fill: currentColor;
@@ -383,7 +379,6 @@ border-radius: 2px;
   display: flex;
   padding: 0px;
   margin-bottom: 16px;
-  
 }
 .footer-logo-web {
   color: #4d5ae5;
@@ -429,7 +424,7 @@ border-radius: 2px;
   background: #31d0aa;
 }
 
-/* Стилі портфоліо  */
+/*------------------ Portfolio------------------ */
 .projects {
   padding-top: 96px;
   padding-bottom: 120px;
@@ -445,7 +440,8 @@ border-radius: 2px;
   margin-top: 0;
 }
 .projects-shadow {
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-shadow:hover {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
@@ -474,10 +470,12 @@ border-radius: 2px;
   cursor: pointer;
   border: 1px solid #e7e9fc;
   border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-btn:is(:hover, :focus) {
-  background: #404bbf;
+  background-color: #404bbf;
   color: #f4f4fd;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -491,11 +489,32 @@ border-radius: 2px;
   row-gap: 48px;
 }
 .project-item {
-  background: #ffffff;
+  background-color: #ffffff;
   width: calc((100% - 48px) / 3);
 }
 
 .project-link {
+}
+.project-item:is(:hover, :focus) .projects-top-text {
+  transform: translateY(0%);
+}
+.projects-top-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.projects-top-text {
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  line-height: var(--text-lh);
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  background-color: #4d5ae5;
+  padding: 40px 32px;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: auto;
 }
 .project-subtitle {
   font-weight: 500;
@@ -510,4 +529,46 @@ border-radius: 2px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #434455;
+}
+/*------------------ Modal------------------ */
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+  width: 408px;
+  min-height: 576px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 24px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.modal-close {
+  width: 24px;
+  height: 24px;
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
 }
